@@ -1,6 +1,3 @@
 [submodule "pallets/test-pallet"]
 	path = pallets/test-pallet
 	url = git@github.com:ibchain/test-pallet.git
-[submodule "devpallets/test-pallet"]
-	path = devpallets/test-pallet
-	url = git@github.com:ibchain/test-pallet.git
