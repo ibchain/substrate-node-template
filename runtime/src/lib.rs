@@ -42,6 +42,9 @@ use pallet_transaction_payment::CurrencyAdapter;
 /// Import the template pallet.
 pub use pallet_template;
 
+/// pallet-assets を利用する
+pub use pallet_assets as assets;
+
 /// An index to a block.
 pub type BlockNumber = u32;
 
@@ -264,6 +267,33 @@ impl pallet_template::Config for Runtime {
 	type Event = Event;
 }
 
+// -------------
+// pallet-assets
+// -------------
+
+parameter_types! {
+	pub const AssetDepositBase: Balance = 100 * 10000;
+	pub const AssetDepositPerZombie: Balance = 1 * 10000;
+	pub const StringLimit: u32 = 50;
+	pub const MetadataDepositBase: Balance = 10 * 10000;
+	pub const MetadataDepositPerByte: Balance = 1 * 10000;
+}
+
+impl pallet_assets::Config for Runtime {
+	type Event = Event;
+	type Balance = u64;
+	type AssetId = u32;
+	type Currency = Balances;
+	type ForceOrigin = frame_system::EnsureRoot<AccountId>;
+	type AssetDepositBase = AssetDepositBase;
+	type AssetDepositPerZombie = AssetDepositPerZombie;
+	type StringLimit = StringLimit;
+	type MetadataDepositBase = MetadataDepositBase;
+	type MetadataDepositPerByte = MetadataDepositPerByte;
+	type WeightInfo = pallet_assets::weights::SubstrateWeight<Runtime>;
+}
+// -------------- End
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -281,6 +311,8 @@ construct_runtime!(
 		Sudo: pallet_sudo::{Module, Call, Config<T>, Storage, Event<T>},
 		// Include the custom logic from the template pallet in the runtime.
 		TemplateModule: pallet_template::{Module, Call, Storage, Event<T>},
+		// pallet_assets を追加
+		Assets: assets::{Module, Call, Storage, Event<T>}
 	}
 );
 
