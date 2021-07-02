@@ -43,7 +43,7 @@ use pallet_transaction_payment::CurrencyAdapter;
 pub use pallet_template;
 
 /// pallet-assets を利用する
-pub use pallet_assets as assets;
+// pub use pallet_assets as assets;
 
 /// An index to a block.
 pub type BlockNumber = u32;
@@ -312,7 +312,7 @@ construct_runtime!(
 		// Include the custom logic from the template pallet in the runtime.
 		TemplateModule: pallet_template::{Module, Call, Storage, Event<T>},
 		// pallet_assets を追加
-		Assets: assets::{Module, Call, Storage, Event<T>}
+		Assets: pallet_assets::{Module, Call, Storage, Event<T>}
 	}
 );
 
