@@ -41,6 +41,7 @@ use pallet_transaction_payment::CurrencyAdapter;
 
 /// Import the template pallet.
 pub use pallet_template;
+pub use test_pallet;
 
 /// pallet-assets を利用する
 // pub use pallet_assets as assets;
@@ -294,6 +295,11 @@ impl pallet_assets::Config for Runtime {
 }
 // -------------- End
 
+impl test_pallet::Config for Runtime {
+	type Event = Event;
+	type AssetsInterface = Self;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -311,6 +317,7 @@ construct_runtime!(
 		Sudo: pallet_sudo::{Module, Call, Config<T>, Storage, Event<T>},
 		// Include the custom logic from the template pallet in the runtime.
 		TemplateModule: pallet_template::{Module, Call, Storage, Event<T>},
+		TestPallet: test_pallet::{Module, Call, Storage, Event<T>},
 		// pallet_assets を追加
 		Assets: pallet_assets::{Module, Call, Storage, Event<T>}
 	}
