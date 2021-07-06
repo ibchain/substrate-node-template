@@ -297,7 +297,6 @@ impl pallet_assets::Config for Runtime {
 
 impl test_pallet::Config for Runtime {
 	type Event = Event;
-	type AssetsInterface = Self;
 }
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
