@@ -2036,6 +2036,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "hello-substrate"
+version = "3.0.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+]
+
+[[package]]
 name = "hermit-abi"
 version = "0.1.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3519,6 +3532,7 @@ dependencies = [
  "frame-system",
  "frame-system-benchmarking",
  "frame-system-rpc-runtime-api",
+ "hello-substrate",
  "hex-literal",
  "pallet-assets",
  "pallet-aura",

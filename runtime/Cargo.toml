@@ -27,6 +27,7 @@ serde = { features = ['derive'], optional = true, version = '1.0.119' }
 # local dependencies
 pallet-template = { path = '../pallets/template', default-features = false, version = '3.0.0' }
 test-pallet = { path='../pallets/test-pallet', default-features = false, version = '3.0.0' }
+hello-substrate = { path = "../pallets/hello-substrate", default-features = false }
 
 # Substrate dependencies
 frame-benchmarking = { default-features = false, optional = true, version = '3.0.0' }
@@ -55,7 +56,6 @@ sp-std = { default-features = false, version = '3.0.0' }
 sp-transaction-pool = { default-features = false, version = '3.0.0' }
 sp-version = { default-features = false, version = '3.0.0' }
 pallet-assets = { default-features = false, version = '3.0.0' }
-
 
 [features]
 default = ['std']
@@ -97,4 +97,5 @@ std = [
     'sp-transaction-pool/std',
     'sp-version/std',
     'pallet-assets/std',
+    'hello-substrate/std',
 ]
