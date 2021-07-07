@@ -301,6 +301,10 @@ impl test_pallet::Config for Runtime {
 
 impl hello_substrate::Config for Runtime {}
 
+impl struct_storage::Config for Runtime {
+	type Event = Event;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -323,6 +327,8 @@ construct_runtime!(
 		Assets: pallet_assets::{Module, Call, Storage, Event<T>},
 		// pallet: hello-substrate
 		HelloSubstrate: hello_substrate::{Module, Call},
+		// pallet: struct-storage
+		StructStorage: struct_storage::{Module, Call, Storage, Event<T>},
 	}
 );
 
