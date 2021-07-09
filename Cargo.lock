@@ -3546,6 +3546,7 @@ dependencies = [
  "pallet-transaction-payment-rpc-runtime-api",
  "parity-scale-codec",
  "serde",
+ "simple-crowdfund",
  "sp-api",
  "sp-block-builder",
  "sp-consensus-aura",
@@ -6216,6 +6217,22 @@ dependencies = [
  "num-complex",
  "num-traits",
  "paste 0.1.18",
+]
+
+[[package]]
+name = "simple-crowdfund"
+version = "2.0.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "pallet-balances",
+ "parity-scale-codec",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+ "sp-storage",
 ]
 
 [[package]]

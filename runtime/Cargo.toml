@@ -29,6 +29,7 @@ pallet-template = { path = '../pallets/template', default-features = false, vers
 test-pallet = { path='../pallets/test-pallet', default-features = false, version = '3.0.0' }
 hello-substrate = { path = "../pallets/hello-substrate", default-features = false }
 struct-storage = { path = "../pallets/struct-storage", default-features = false }
+simple-crowdfund = { path = "../pallets/simple-crowdfund", default-features = false}
 
 # Substrate dependencies
 frame-benchmarking = { default-features = false, optional = true, version = '3.0.0' }
@@ -100,4 +101,5 @@ std = [
     'pallet-assets/std',
     'hello-substrate/std',
     'struct-storage/std',
+    "simple-crowdfund/std",
 ]

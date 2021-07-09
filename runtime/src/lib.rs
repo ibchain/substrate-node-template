@@ -305,6 +305,23 @@ impl struct_storage::Config for Runtime {
 	type Event = Event;
 }
 
+// simple crowdfund -------------------------
+parameter_types! {
+	pub const SubmissionDeposit: u128 = 1_000;
+	pub const MinContribution: u128 = 10_000;
+	pub const RetirementPeriod: u32 = 10_000;
+}
+
+impl simple_crowdfund::Config for Runtime {
+	type Event = Event;
+	type Currency = Balances;
+	type SubmissionDeposit = SubmissionDeposit;
+	type MinContribution = MinContribution;
+	type RetirementPeriod = RetirementPeriod;
+}
+// ----------------------------------------- End
+
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -329,6 +346,7 @@ construct_runtime!(
 		HelloSubstrate: hello_substrate::{Module, Call},
 		// pallet: struct-storage
 		StructStorage: struct_storage::{Module, Call, Storage, Event<T>},
+		SimpleCrowdfund: simple_crowdfund::{Module, Call, Storage, Event<T>},
 	}
 );
 
