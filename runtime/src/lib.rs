@@ -97,12 +97,22 @@ pub mod opaque {
 }
 
 pub const VERSION: RuntimeVersion = RuntimeVersion {
-	spec_name: create_runtime_str!("node-template"),
-	impl_name: create_runtime_str!("node-template"),
+	// Rntime 識別子
+	spec_name: create_runtime_str!("IB-Chain-development"),
+	// 仕様実装識別子
+	impl_name: create_runtime_str!("IB-Chain-development"),
+	// ネイティブ Runtime と等しくない場合はブロック生成を行わない（ Runtime だけバージョンアップした場合に発生する )
 	authoring_version: 1,
+	// Runtime 仕様バージョン
+	// spec_name, spec_version, authoring_version 全てがネイティブ Runtime と等しくない場合は, ノードは native runtime を使用しない
 	spec_version: 100,
+	// 仕様実装バージョン
 	impl_version: 1,
+	// Runtime API のバージョン
 	apis: RUNTIME_API_VERSIONS,
+	// トランザクションバージョン
+	// パレットが削除されたり const_runtime! マクロ内で順序が変わった場合に更新
+	// spec_version も更新する必要がある
 	transaction_version: 1,
 };
 
