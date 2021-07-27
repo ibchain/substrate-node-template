@@ -15,3 +15,22 @@ services:
         source: ./.local
         target: /root/.local
     command: bash -c "cargo build --release && ./target/release/node-ibchaindev --dev --ws-external"
+  ibdev:
+    build: .
+    container_name: node-ibdevchain
+    image: node-ibdevchain:1
+    ports:
+      - "9944:9944"
+    volumes:
+      - type: bind
+        source: ./.local
+        target: /root/.local
+    command: bash -c "/var/www/node-ibchaindev --dev --ws-external"
+  purge-ibdev:
+    container_name: node-ibdevchain
+    image: node-ibdevchain:1
+    volumes:
+      - type: bind
+        source: ./.local
+        target: /root/.local
+    command: bash -c "/var/www/node-ibchaindev purge-chain --dev -y"
